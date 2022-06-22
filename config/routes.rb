@@ -1,8 +1,9 @@
 Rails.application.routes.draw do
-  get 'index/show'
-  get 'index/edit'
-  get 'index/update'
-  get 'index/destroy'
+  get 'reports/index'
+  get 'reports/show'
+  get 'reports/edit'
+  get 'reports/update'
+  get 'reports/destroy'
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Defines the root path route ("/")
