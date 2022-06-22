@@ -15,23 +15,16 @@ RSpec.describe "Reports", type: :request do
     end
   end
 
+  describe "GET /new" do
+    it "returns http success" do
+      get "/reports/new"
+      expect(response).to have_http_status(:success)
+    end
+  end
+
   describe "GET /edit" do
     it "returns http success" do
       get "/reports/edit"
-      expect(response).to have_http_status(:success)
-    end
-  end
-
-  describe "GET /update" do
-    it "returns http success" do
-      get "/reports/update"
-      expect(response).to have_http_status(:success)
-    end
-  end
-
-  describe "GET /destroy" do
-    it "returns http success" do
-      get "/reports/destroy"
       expect(response).to have_http_status(:success)
     end
   end
