@@ -1,0 +1,2 @@
+class PerpetratorDetail < ApplicationRecord
+end
