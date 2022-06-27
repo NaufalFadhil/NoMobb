@@ -4,8 +4,8 @@ class CreatePerpetratorDetails < ActiveRecord::Migration[7.0]
       t.string :fullname
       t.string :nickname
       t.date :birthday
-      t.timestamp :deleted_at
 
+      t.timestamp :deleted_at
       t.timestamps
     end
   end

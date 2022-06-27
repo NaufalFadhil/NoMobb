@@ -22,7 +22,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_06_22_115954) do
 
   create_table "reports", force: :cascade do |t|
     t.integer "user_id"
-    t.string "perpetrator"
+    t.integer "perpetrator_detail_id"
     t.text "reason"
     t.string "proof"
     t.string "witness"
