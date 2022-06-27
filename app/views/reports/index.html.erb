@@ -20,6 +20,7 @@
             <td><%= report.status %></td>
             <td><%= report.is_valid %></td>
             <td><%= report.incident_date %></td>
+            <td><a href="/reports/detail/<%= report.id %>">detail</a></td>
         </tr>
         <% end %>
     </tbody>

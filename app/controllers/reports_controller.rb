@@ -4,6 +4,8 @@ class ReportsController < ApplicationController
   end
 
   def show
+    @report = Report.find_by(id: params[:id])
+    @perpetratorDetail = PerpetratorDetail.find_by(fullname: @report.perpetrator)
   end
 
   def new
