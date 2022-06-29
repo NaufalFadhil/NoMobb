@@ -1,6 +1,9 @@
 class Api::UsersController < ApplicationController
+
+  $masterApiKey = "APIKEY-MASTER@NoMobb.Gigih"
+
   def index
-    if params[:api_key] == "APIKEY-MASTER@NoMobb.Gigih"
+    if params[:api_key] == $masterApiKey
       @users = User.all
       render json: {status: true, data: @users}, status: 200
     else
@@ -9,7 +12,7 @@ class Api::UsersController < ApplicationController
   end
 
   def show
-    if params[:api_key] == "APIKEY-MASTER@NoMobb.Gigih"
+    if params[:api_key] == $masterApiKey
       @user = User.find_by(id: params[:id])
       if @user 
         render json: {status: true, data: @user}, status: 200
@@ -22,7 +25,7 @@ class Api::UsersController < ApplicationController
   end
 
   def create
-    if params[:api_key] == "APIKEY-MASTER@NoMobb.Gigih"
+    if params[:api_key] == $masterApiKey
       @user = User.create(
         name: params[:name],
         email: params[:email],
@@ -45,5 +48,17 @@ class Api::UsersController < ApplicationController
   end
 
   def destroy
+    if params[:api_key] == $masterApiKey
+      @user = User.find_by(id: params[:id])
+
+      begin
+        @user.destroy
+        render json: {status: true, message: "User has been deleted"}, status: 200
+      rescue => exception
+        render json: {status: false, message: "Fail delete user", error: exception}, status: 400 
+      end
+    else
+      render json: {status: false, error: "Unauthorized"}, status: 401
+    end
   end
 end
