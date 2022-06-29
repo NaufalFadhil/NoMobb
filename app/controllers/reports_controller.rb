@@ -5,7 +5,7 @@ class ReportsController < ApplicationController
 
   def show
     @report = Report.find_by(id: params[:id])
-    @perpetratorDetail = PerpetratorDetail.find_by(fullname: @report.perpetrator)
+    @perpetratorDetail = PerpetratorDetail.find_by(id: @report.perpetrator_detail_id)
   end
 
   def new
@@ -14,40 +14,28 @@ class ReportsController < ApplicationController
   end
 
   def create
-    # item = Item.create(params.require(:item).permit(:perpetrator, :reason))
+    @perpetratorDetail = PerpetratorDetail.new(
+      fullname: params[:fullname],
+      nickname: params[:nickname],
+      birthday: params[:birthday],
+      deleted_at: nil
+    )
 
-    fullname = params[:fullname]
-    nickname = params[:nickname]
-    birthday = params[:birthday]
-    reason = params[:reason]
-    proof = params[:proof]
-    witness = params[:witness]
-    incident_location = params[:incident_location]
-    incident_date = params[:incident_date]
-    status = "PENDING"
-    is_valid = false
-    deleted_at = nil
+    @perpetratorDetail.save
 
     @report = Report.new(
-      perpetrator:fullname,
-      reason:reason,
-      proof: proof,
-      witness:witness,
-      incident_location:incident_location,
-      incident_date:incident_date,
-      status: status,
-      is_valid: is_valid,
-      deleted_at: deleted_at
+      perpetrator_detail_id: @perpetratorDetail.id,
+      reason: params[:reason],
+      proof: params[:proof],
+      witness: params[:witness],
+      incident_location: params[:incident_location],
+      incident_date: params[:incident_date],
+      status: 'PENDING',
+      is_valid: false,
+      deleted_at: nil
     )
 
-    @perpetratorDetail = PerpetratorDetail.new(
-      fullname: fullname,
-      nickname: nickname,
-      birthday: birthday,
-      deleted_at: deleted_at
-    )
-
-    if @report.save && @perpetratorDetail.save
+    if @report.save
         flash[:notice] = "Post successfully created"
         redirect_to("/reports/index")
     else

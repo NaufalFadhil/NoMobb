@@ -1,5 +1,5 @@
 class Report < ApplicationRecord
-    validates :perpetrator, presence: true
+    validates :perpetrator_detail_id, presence: true
     validates :reason, presence: true
     validates :proof, presence: true
     validates :witness, presence: true
