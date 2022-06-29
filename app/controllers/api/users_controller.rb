@@ -34,10 +34,12 @@ class Api::UsersController < ApplicationController
         is_verified: params[:is_verified],
         role: params[:role]
       )
-      if @user.save
+      
+      begin
+        @user.save
         render json: {status: true, message: "User has been created", data: @user}, status: 201
-      else
-        render json: {status: false, error: "Fail create user"}, status: 400 
+      rescue => exception
+        render json: {status: false, message: "Fail create user", error: exception}, status: 400 
       end
     else
       render json: {status: false, error: "Unauthorized"}, status: 401
