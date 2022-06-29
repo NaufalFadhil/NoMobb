@@ -9,6 +9,16 @@ class Api::UsersController < ApplicationController
   end
 
   def show
+    if params[:api_key] == "APIKEY-MASTER@NoMobb.Gigih"
+      @user = User.find_by(id: params[:id])
+      if @user 
+        render json: {status: true, data: @user}, status: 200
+      else
+        render json: {status: false, message: "User not found"}, status: 404
+      end
+    else
+      render json: {status: false, error: "Unauthorized"}, status: 401
+    end
   end
 
   def create
