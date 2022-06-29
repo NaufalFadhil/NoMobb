@@ -47,6 +47,26 @@ class Api::UsersController < ApplicationController
   end
 
   def update
+    if params[:api_key] == $masterApiKey
+      @user = User.find(params[:id])
+
+      begin
+        @user.update(
+          name: params[:name],
+          email: params[:email],
+          phone: params[:phone],
+          password: params[:password],
+          is_verified: params[:is_verified],
+          role: params[:role]
+        )
+
+        render json: {status: true, message: "User has been edited", data: @user}, status: 201
+      rescue => exception
+        render json: {status: false, message: "Fail update user", error: exception}, status: 400 
+      end
+    else
+      render json: {status: false, error: "Unauthorized"}, status: 401
+    end
   end
 
   def destroy
