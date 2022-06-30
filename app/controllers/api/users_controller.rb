@@ -16,7 +16,7 @@ class Api::UsersController < ApplicationController
   end
 
   def create
-    @user = User.create(
+    @user = User.new(
       name: params[:name],
       email: params[:email],
       phone: params[:phone],
@@ -24,19 +24,23 @@ class Api::UsersController < ApplicationController
       is_verified: params[:is_verified],
       role: params[:role]
     )
-    
-    begin
-      @user.save
-      render json: {status: true, message: "User has been created", data: @user}, status: 201
-    rescue => exception
-      render json: {status: false, message: "Fail create user", error: exception}, status: 400 
+
+    if @user.valid?
+      begin
+        @user.save
+        render json: {status: true, message: "User has been created", data: @user}, status: 201
+      rescue => exception
+        render json: {status: false, message: "Fail create user", error: exception}, status: 400 
+      end
+    else
+      render json: {status: false, message: "Fail create user", error: @user.errors}, status: 400 
     end
   end
 
   def update
-    @user = User.find(params[:id])
-
     begin
+      @user = User.find(params[:id])
+
       @user.update(
         name: params[:name],
         email: params[:email],
@@ -46,16 +50,20 @@ class Api::UsersController < ApplicationController
         role: params[:role]
       )
 
-      render json: {status: true, message: "User has been edited", data: @user}, status: 201
+      if @user.valid?
+        render json: {status: true, message: "User has been edited", data: @user}, status: 201
+      else
+        render json: {status: false, message: "Fail edit user", error: @user.errors}, status: 400 
+      end
     rescue => exception
       render json: {status: false, message: "Fail update user", error: exception}, status: 400 
     end
   end
 
   def destroy
-    @user = User.find_by(id: params[:id])
-
     begin
+      @user = User.find_by(id: params[:id])
+
       @user.destroy
       render json: {status: true, message: "User has been deleted"}, status: 200
     rescue => exception
