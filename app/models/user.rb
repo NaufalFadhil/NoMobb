@@ -1,8 +1,4 @@
 class User < ApplicationRecord
-    validates :name, presence: true
-    validates :email, presence: true
-    validates :phone, presence: true
-    validates :password, presence: true
-    validates :is_verified, presence: true
-    validates :role, presence: true
+    validates :name, :email, :phone, :password, :role, presence: true
+    validates :is_verified, inclusion: { in: [true, false] }
 end

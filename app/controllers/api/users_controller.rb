@@ -1,8 +1,6 @@
 class Api::UsersController < ApplicationController
   before_action :authenticate_user
 
-  # $masterApiKey = "APIKEY-MASTER@NoMobb.Gigih"
-
   def index
     @users = User.all
     render json: {status: true, data: @users}, status: 200

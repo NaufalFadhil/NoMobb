@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe User, type: :model do
   it 'is valid with all field' do
-    user = User.new(\
+    user = User.new(
         name: "Naufal Fadhil Athallah",
         email: "NaufalFadhil@google.com",
         phone: "08123456789",
@@ -81,7 +81,7 @@ RSpec.describe User, type: :model do
     )
 
     user.valid?
-    expect(user.errors[:is_verified]).to include("can't be blank")
+    expect(user.errors[:is_verified]).to include("is not included in the list")
   end
 
   it 'is invalid without a role' do
