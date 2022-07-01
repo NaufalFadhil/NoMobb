@@ -61,13 +61,17 @@ class Api::UsersController < ApplicationController
   end
 
   def destroy
-    begin
-      @user = User.find_by(id: params[:id])
+    @user = User.find_by(id: params[:id])
+    if @user
+      begin
 
-      @user.destroy
-      render json: {status: true, message: "User has been deleted"}, status: 200
-    rescue => exception
-      render json: {status: false, message: "Fail delete user", error: exception}, status: 400 
+        @user.delete
+        render json: {status: true, message: "User has been deleted"}, status: 200
+      rescue => exception
+        render json: {status: false, message: "Fail delete user", error: exception}, status: 400 
+      end
+    else
+      render json: {status: false, message: "User not found"}, status: 404 
     end
   end
 end
