@@ -1,6 +1,8 @@
 class User < ApplicationRecord
     has_secure_password
-    validates :email, :phone, presence: true, uniqueness: { case_sensitive: false }, on: :create
-    validates :name, :email, :phone, :password, :role, presence: true
+    validates :name, presence: true
     validates :is_verified, inclusion: { in: [true, false] }
+    validates :role, presence: true, inclusion: { in: ["ADMIN", "BASIC", "PSIKOLOGIST", "INSTITUTION"] }
+    validates :email, :phone, presence: true
+    validates :email, :phone, uniqueness: { case_sensitive: false }, on: :create
 end
