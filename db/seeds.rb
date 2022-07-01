@@ -16,3 +16,11 @@ users = User.create([
         role: "ADMIN"
     }
 ]);
+
+api_access = ApiAccess.create([
+    { 
+        user_id: 1,
+        token: "asdfghjklasdfghjkl",
+        expired_date: "2022-07-01"
+    }
+]);
