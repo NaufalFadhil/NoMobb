@@ -1,5 +1,80 @@
 require 'rails_helper'
 
 RSpec.describe ApiAccess, type: :model do
-  # pending "add some examples to (or delete) #{__FILE__}"
+  it 'is valid with all field' do
+    access = ApiAccess.create(
+        user_id: 1,
+        token: generate_token,
+        expired_date: "2022-12-31"
+    )
+
+    expect(access).to be_valid
+  end
+
+  it 'is invalid without a user id' do
+    access = ApiAccess.new(
+      user_id: nil,
+      token: nil,
+      expired_date: nil
+    )
+
+    access.valid?
+    expect(access.errors[:user_id]).to include("can't be blank")
+  end
+
+  it 'is invalid without a token' do
+    access = ApiAccess.new(
+      user_id: nil,
+      token: nil,
+      expired_date: nil
+    )
+
+    access.valid?
+    expect(access.errors[:token]).to include("can't be blank")
+  end
+
+  it 'is invalid without a expired_date' do
+    access = ApiAccess.new(
+      user_id: nil,
+      token: nil,
+      expired_date: nil
+    )
+
+    access.valid?
+    expect(access.errors[:expired_date]).to include("can't be blank")
+  end
+
+  it 'is invalid with duplicate token' do
+    access = ApiAccess.create(
+      user_id: 1,
+      token: "abcde12345",
+      expired_date: "2022-12-31"
+    )
+
+    access2 = ApiAccess.create(
+      user_id: 1,
+      token: "abcde12345",
+      expired_date: "2022-12-31"
+    )
+
+    access2.valid?
+    expect(access2.errors[:token]).to include("has already been taken")
+  end
+
+  it 'is valid with all field' do
+    access = ApiAccess.create(
+        user_id: 1,
+        token: generate_token,
+        expired_date: "2021-12-31"
+    )
+
+    expect(access.errors[:expired_date]).to include("can't be in the past")
+  end
+end
+
+def generate_token
+  token = loop do
+      random_token = SecureRandom.urlsafe_base64(nil, false)
+      break random_token unless ApiAccess.exists?(token: random_token)
+  end
 end
