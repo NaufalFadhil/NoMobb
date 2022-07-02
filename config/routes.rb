@@ -3,6 +3,7 @@ Rails.application.routes.draw do
     resources :reports, only: [:index, :show, :create, :update, :destroy]
     resources :users, only: [:index, :show, :create, :update, :destroy]
     resources :accesses, only: [:index, :show, :create, :update, :destroy]
+    get "checker" => "reports#check" 
   end
   get 'reports/index'
   get 'reports/new'
