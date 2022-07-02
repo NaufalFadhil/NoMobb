@@ -13,10 +13,10 @@
         </tr>
     </thead>
     <tbody>
-        <% @reports[0].each do |report| %>
+        <% @reports.each do |report| %>
         <tr>
             <td><%= report.user_id %></td>
-            <td><%= report.perpetrator_detail_id %></td>
+            <td><%= report.perpetrator_fullname %></td>
             <td><%= report.status %></td>
             <td><%= report.is_valid %></td>
             <td><%= report.incident_date %></td>

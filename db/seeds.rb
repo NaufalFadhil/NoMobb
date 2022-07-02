@@ -6,31 +6,6 @@
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
 
-
-perpetrator_detail = PerpetratorDetail.create([
-    {
-        fullname: "Naufal Fadhil Athallah",
-        nickname: "Fadhil",
-        birthday: nil,
-        deleted_at: nil
-    },
-])
-
-report = Report.create([
-    {
-        user_id: 1,
-        perpetrator_detail_id: 1,
-        reason: "reason reason reason",
-        proof: "LukaLebam.jpg",
-        witness: "Teman",
-        incident_location: "SMP NEGERI X",
-        incident_date: "2022-06-22",
-        status: "CHECKED",
-        is_valid: false,
-        deleted_at: nil
-    },
-])
-
 users = User.create([
     { 
         name: "NoMobb Admin",
@@ -96,3 +71,46 @@ api_access = ApiAccess.create([
         expired_date: "2022-11-30"
     }
 ]);
+
+
+report = Report.create([
+    {
+        user_id: 1,
+        perpetrator_fullname: "Naufal Fadhil Athallah",
+        perpetrator_nickname: "Fadhil",
+        perpetrator_birthday: "2001-01-01",
+        reason: "Diinjak",
+        proof: "https://drive.google.com",
+        witness: "Teman Sekelas",
+        incident_location: "SD NEGERI X",
+        incident_date: "2022-06-22",
+        status: "CHECKED",
+        is_valid: true
+    },
+    {
+        user_id: 2,
+        perpetrator_fullname: "Andi Pranata Subakti",
+        perpetrator_nickname: "Andi",
+        perpetrator_birthday: "2000-01-01",
+        reason: "Barangku diambil",
+        proof: "https://drive.google.com",
+        witness: "Udin",
+        incident_location: "SMP NEGERI X",
+        incident_date: "2020-05-02",
+        status: "PENDING",
+        is_valid: false
+    },
+    {
+        user_id: 3,
+        perpetrator_fullname: "Ihsan Ahsanu Amalai",
+        perpetrator_nickname: "Ihsan",
+        perpetrator_birthday: nil,
+        reason: "Dipukul",
+        proof: "https://drive.google.com",
+        witness: "Asep",
+        incident_location: "SMA NEGERI X",
+        incident_date: "2021-02-22",
+        status: "PENDING",
+        is_valid: false
+    },
+])

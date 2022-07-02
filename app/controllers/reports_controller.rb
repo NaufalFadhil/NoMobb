@@ -5,34 +5,25 @@ class ReportsController < ApplicationController
 
   def show
     @report = Report.find_by(id: params[:id])
-    @perpetratorDetail = PerpetratorDetail.find_by(id: @report.perpetrator_detail_id)
   end
 
   def new
     @report = Report.new
-    @perpetratorDetail = PerpetratorDetail.new
   end
 
   def create
-    @perpetratorDetail = PerpetratorDetail.new(
-      fullname: params[:fullname],
-      nickname: params[:nickname],
-      birthday: params[:birthday],
-      deleted_at: nil
-    )
-
-    @perpetratorDetail.save
-
     @report = Report.new(
-      perpetrator_detail_id: @perpetratorDetail.id,
+      user_id: params[:id],
+      perpetrator_fullname: params[:fullname],
+      perpetrator_nickname: params[:nickname],
+      perpetrator_birthday: params[:birthday],
       reason: params[:reason],
       proof: params[:proof],
       witness: params[:witness],
       incident_location: params[:incident_location],
       incident_date: params[:incident_date],
       status: 'PENDING',
-      is_valid: false,
-      deleted_at: nil
+      is_valid: false
     )
 
     if @report.save

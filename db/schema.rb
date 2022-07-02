@@ -19,18 +19,11 @@ ActiveRecord::Schema[7.0].define(version: 2022_06_30_074847) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "perpetrator_details", force: :cascade do |t|
-    t.string "fullname"
-    t.string "nickname"
-    t.date "birthday"
-    t.datetime "deleted_at", precision: nil
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
   create_table "reports", force: :cascade do |t|
     t.integer "user_id"
-    t.integer "perpetrator_detail_id"
+    t.string "perpetrator_fullname"
+    t.string "perpetrator_nickname"
+    t.date "perpetrator_birthday"
     t.text "reason"
     t.string "proof"
     t.string "witness"
@@ -38,7 +31,6 @@ ActiveRecord::Schema[7.0].define(version: 2022_06_30_074847) do
     t.datetime "incident_date", precision: nil
     t.string "status"
     t.boolean "is_valid"
-    t.datetime "deleted_at", precision: nil
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
