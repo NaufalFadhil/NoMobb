@@ -143,4 +143,17 @@ RSpec.describe User, type: :model do
     user2.valid?
     expect(user2.errors[:email]).to include("has already been taken")
   end
+
+  it 'is invalid with wrong email format' do
+    user = User.new(
+      name: "Naufal Fadhil Athallah",
+      email: "NaufalFadhil@google",
+      phone: "08123456789",
+      password: "adfghjklmnbvcxz",
+      is_verified: true,
+      role: "ADMIN"
+    )
+    
+    expect(user).to be_invalid
+  end
 end
