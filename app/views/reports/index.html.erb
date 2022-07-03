@@ -1,0 +1,28 @@
+<h1>Reports#index</h1>
+<p>Find me in app/views/reports/index.html.erb</p>
+<h1> Reports </h1>
+<table>
+    <thead>
+        <tr>
+            <td><b>Pelapor</b></td>
+            <td><b>Pelaku</b></td>
+            <td><b>Status</b></td>
+            <td><b>Validasi</b></td>
+            <td><b>Tanggal kejadian</b></td>
+            <td><b>Action</b></td>
+        </tr>
+    </thead>
+    <tbody>
+        <% @reports.each do |report| %>
+        <tr>
+            <td><%= report.user_id %></td>
+            <td><%= report.perpetrator_fullname %></td>
+            <td><%= report.status %></td>
+            <td><%= report.is_valid %></td>
+            <td><%= report.incident_date %></td>
+            <td><a href="/reports/detail/<%= report.id %>">detail</a></td>
+        </tr>
+        <% end %>
+    </tbody>
+</table>
+<a href="/reports/new">New Report</a>

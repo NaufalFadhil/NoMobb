@@ -1,0 +1,24 @@
+<h1>Reports#new</h1>
+<p>Find me in app/views/reports/new.html.erb</p>
+
+<h3>Create an Report</h3>
+<%= form_with model: @reports do |form| %>
+    <p>Nama lengkap pelaku perundungan</p>
+    <%= form.text_field :fullname, placeholder: "Masukkan nama lengkap pelaku perundungan" %>
+    <p>Nama panggilan pelaku perundungan</p>
+    <%= form.text_field :nickname, placeholder: "Masukkan nama panggilan pelaku perundungan" %>
+    <p>Tanggal lahir pelaku perundungan</p>
+    <%= form.date_field :birthday, placeholder: "Masukkan Tanggal" %>
+    <p>Ceritakan kejadian</p>
+    <%= form.text_field :reason, placeholder: "Ceritakan kejadian perundungan" %>
+    <p>Bukti perundungan</p>
+    <%= form.text_field :proof, placeholder: "Masukkan bukti perundungan" %>
+    <p>Saksi perundungan</p>
+    <%= form.text_field :witness, placeholder: "Tuliskan saksi perundungan" %>
+    <p>Tempat perundungan</p>
+    <%= form.text_field :incident_location, placeholder: "Masukkan tempat perundungan" %>
+    <p>Tanggal perundungan</p>
+    <%= form.date_field :incident_date, placeholder: "Masukkan Tanggal" %>
+    <br><br>
+    <%= form.submit %>
+<% end %>

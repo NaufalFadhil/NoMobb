@@ -1,0 +1,89 @@
+<h1>Detail Laporan</h1>
+<p>Find me in app/views/reports/show.html.erb</p>
+
+<h3> Data Pelapor </h3>
+<table>
+    <tbody>
+        <tr>
+            <td><b>Nama</b></td>
+            <td><%= @report.user_id %></td>
+        </tr>
+        <tr>
+            <td><b>No. HP</b></td>
+            <td>HardCode</td>
+        </tr>
+        <tr>
+            <td><b>Email</b></td>
+            <td>HardCode</td>
+        </tr>
+        <tr>
+            <td><b>Alamat</b></td>
+            <td>HardCode</td>
+        </tr>
+    </tbody>
+</table>
+
+<h3> Data Terlapor </h3>
+<table>
+    <tbody>
+        <tr>
+            <td><b>Nama lengkap pelaku</b></td>
+            <td><%= @perpetratorDetail.fullname %></td>
+        </tr>
+        <tr>
+            <td><b>Nama panggilan pelaku</b></td>
+            <td><%= @perpetratorDetail.nickname %></td>
+        </tr>
+        <tr>
+            <td><b>Tanggal lahir pelaku</b></td>
+            <td><%= @perpetratorDetail.birthday %></td>
+        </tr>
+    </tbody>
+</table>
+
+
+<h3> Laporan </h3>
+<table>
+    <tbody>
+        <tr>
+            <td><b>Alasan</b></td>
+            <td><%= @report.reason %></td>
+        </tr>
+        <tr>
+            <td><b>Bukti</b></td>
+            <td><%= @report.proof %></td>
+        </tr>
+        <tr>
+            <td><b>Saksi</b></td>
+            <td><%= @report.witness %></td>
+        </tr>
+        <tr>
+            <td><b>Tempat kejadian</b></td>
+            <td><%= @report.incident_location %></td>
+        </tr>
+        <tr>
+            <td><b>Tanggal kejadian</b></td>
+            <td><%= @report.incident_date %></td>
+        </tr>
+        <tr>
+            <td><b>Status</b></td>
+            <td><%= @report.status %></td>
+        </tr>
+        <tr>
+            <td><b>Validasi</b></td>
+            <td><%= @report.is_valid %></td>
+        </tr>
+        <tr>
+            <td><b>Tanggal dibuat</b></td>
+            <td><%= @report.created_at %></td>
+        </tr>
+        <tr>
+            <td><b>Tanggal diubah</b></td>
+            <td><%= @report.updated_at %></td>
+        </tr>
+        <tr>
+            <td><b>Tanggal dihapus</b></td>
+            <td><%= @report.deleted_at %></td>
+        </tr>
+    </tbody>
+</table>
