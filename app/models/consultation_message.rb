@@ -1,0 +1,2 @@
+class ConsultationMessage < ApplicationRecord
+end
