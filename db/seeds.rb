@@ -141,3 +141,21 @@ consultation_message = ConsultationMessage.create([
         receiver: 2
     }
 ])
+
+community = Community.create([
+    { 
+        sender: 1,
+        title: "Minta saran terkait hal yang disekolah",
+        message_preview: "Jadi begini aku mau cerita"
+    },
+    { 
+        sender: 2,
+        title: "Minta saran terkait hal yang dikantor",
+        message_preview: "Jadi begini aku mau cerita"
+    },
+    { 
+        sender: 3,
+        title: "Minta saran terkait teman saya yang dibully",
+        message_preview: "Jadi begini aku mau cerita"
+    },
+]);
