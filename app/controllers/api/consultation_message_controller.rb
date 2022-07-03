@@ -2,7 +2,6 @@ class Api::ConsultationMessageController < ApplicationController
   before_action :authenticate_user
   
   def index
-    #  = ConsultationMessage.all
     @messages = ConsultationMessage.group(:roomchat_id).count
 
     if !@messages.empty?
