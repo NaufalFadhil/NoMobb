@@ -114,3 +114,30 @@ report = Report.create([
         is_valid: false
     },
 ])
+
+consultation_message = ConsultationMessage.create([
+    {
+        roomchat_id: 1,
+        sender: 1,
+        message: "Haloo",
+        receiver: 2
+    },
+    {
+        roomchat_id: 1,
+        sender: 1,
+        message: "Halo juga",
+        receiver: 2
+    },
+    {
+        roomchat_id: 1,
+        sender: 1,
+        message: "Ada yang bisa saya bantu?",
+        receiver: 2
+    },
+    {
+        roomchat_id: 1,
+        sender: 1,
+        message: "Saya ingin berkonsultasi tentang pembulian yang terjadi",
+        receiver: 2
+    }
+])
