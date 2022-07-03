@@ -10,11 +10,27 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_07_03_085321) do
+ActiveRecord::Schema[7.0].define(version: 2022_07_03_134735) do
   create_table "api_accesses", force: :cascade do |t|
     t.integer "user_id"
     t.string "token"
     t.datetime "expired_date"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "communities", force: :cascade do |t|
+    t.integer "sender"
+    t.string "title"
+    t.text "message_preview"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "community_messages", force: :cascade do |t|
+    t.integer "community_id"
+    t.integer "sender"
+    t.string "message"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

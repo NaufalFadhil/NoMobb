@@ -4,7 +4,9 @@ Rails.application.routes.draw do
     resources :users, only: [:index, :show, :create, :update, :destroy]
     resources :accesses, only: [:index, :show, :create, :update, :destroy]
     resources :consultation_message, only: [:index, :show, :create, :update, :destroy]
+    resources :community, only: [:index, :show, :create, :update, :destroy]
     get "checker" => "reports#check" 
+    post "community/message" => "community#create_message" 
   end
   get 'reports/index'
   get 'reports/new'
